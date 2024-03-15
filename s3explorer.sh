@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PROFILE="<insert aws profile here>"
+MAIN_BUCKET="<main bucket>"
 DOWNLOAD_PATH="$HOME/Desktop"
 
 # Color variables
@@ -100,7 +101,7 @@ list_directories() {
 
 # Main function
 main() {
-    local bucket="amex-bucket"
+    local bucket="$MAIN_BUCKET"
     local contents
 
     echo -e "\n\n${FLUORESCENT}${BOLD}S3Explorer by G.Verrelli v. 3.0.12${NC}\n"    
