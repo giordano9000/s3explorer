@@ -1,7 +1,6 @@
 #!/bin/bash
 
-PROFILE="olsatemp"
-KEY_GENERATOR_PATH="./olsa-generate-aws-temp-keys.sh"
+PROFILE="<insert aws profile here>"
 DOWNLOAD_PATH="$HOME/Desktop"
 
 # Color variables
@@ -9,15 +8,6 @@ ORANGE='\033[0;33m'
 FLUORESCENT='\033[1;35m'
 BOLD='\033[1m'
 NC='\033[0m' # No Color
-
-# Check if PROFILE is "olsatemp" and execute KEY_GENERATOR_PATH script
-generate_temp_keys(){
-    if [ "$PROFILE" = "olsatemp" ]; then
-        bash "$KEY_GENERATOR_PATH"
-    else
-        echo "PROFILE is not olsatemp. Proceeding with the rest of the script..."
-    fi
-}
 
 list_bucket_contents() {
     local s3Path=$(echo "$1$2" | sed 's#//#/#g')
@@ -113,8 +103,7 @@ main() {
     local bucket="amex-bucket"
     local contents
 
-    echo -e "\n\n${FLUORESCENT}${BOLD}S3Explorer by G.Verrelli v. 3.0.12${NC}"
-    generate_temp_keys
+    echo -e "\n\n${FLUORESCENT}${BOLD}S3Explorer by G.Verrelli v. 3.0.12${NC}\n"    
     echo -e "\n${ORANGE}Retrieving AWS credentials from ~/.aws/credentials...${NC}"
     get_aws_credentials
 
